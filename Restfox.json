@@ -1,0 +1,714 @@
+{
+    "exportedFrom": "Restfox-1.0.0",
+    "collection": [
+        {
+            "_id": "KDO9BLbsC7d1jaWaWeER2",
+            "_type": "request_group",
+            "name": "Auth",
+            "children": [],
+            "parentId": null,
+            "workspaceId": "2cB7Fi-YEtqxkoNaQ_rrC",
+            "sortOrder": 0,
+            "plugins": []
+        },
+        {
+            "_id": "hCWNpbgGpNI0J9CG3s2QK",
+            "_type": "request_group",
+            "name": "Users",
+            "children": [],
+            "parentId": null,
+            "workspaceId": "2cB7Fi-YEtqxkoNaQ_rrC",
+            "sortOrder": 1,
+            "plugins": []
+        },
+        {
+            "_id": "-pFfTIOhMBQKeOpodqU2X",
+            "_type": "request_group",
+            "name": "Projects",
+            "children": [],
+            "parentId": null,
+            "workspaceId": "2cB7Fi-YEtqxkoNaQ_rrC",
+            "sortOrder": 2,
+            "plugins": []
+        },
+        {
+            "_id": "FSrJUe3mlq2r9iHLqjPU_",
+            "_type": "request_group",
+            "name": "Environments",
+            "children": [],
+            "parentId": null,
+            "workspaceId": "2cB7Fi-YEtqxkoNaQ_rrC",
+            "sortOrder": 3,
+            "plugins": []
+        },
+        {
+            "_id": "_aTUh9vWSLLWO4KMvWk82",
+            "_type": "request_group",
+            "name": "Variables",
+            "children": [],
+            "parentId": null,
+            "workspaceId": "2cB7Fi-YEtqxkoNaQ_rrC",
+            "sortOrder": 4,
+            "plugins": []
+        },
+        {
+            "_id": "pbqOEz7BYvLMBzUNfekrX",
+            "_type": "request_group",
+            "name": "Misc",
+            "children": [],
+            "parentId": null,
+            "workspaceId": "2cB7Fi-YEtqxkoNaQ_rrC",
+            "sortOrder": 5,
+            "plugins": []
+        },
+        {
+            "_id": "fCtdVA6IKhVnKPCQaSiik",
+            "_type": "request",
+            "name": "Register (payload dari client crypto)",
+            "method": "POST",
+            "parentId": "KDO9BLbsC7d1jaWaWeER2",
+            "workspaceId": "2cB7Fi-YEtqxkoNaQ_rrC",
+            "url": "http://localhost:8080/api/auth/register",
+            "sortOrder": 0,
+            "plugins": [],
+            "body": {
+                "mimeType": "application/json",
+                "text": "{\n    \"email\": \"user1@example.com\",\n    \"auth_key\": \"BASE64_HKDF_AUTH_KEY (dihasilkan client, JANGAN pakai nilai contoh)\",\n    \"kdf\": {\n        \"algorithm\": \"argon2id\",\n        \"salt\": \"BASE64_16_BYTE_SALT\",\n        \"params\": {\n            \"m\": 65536,\n            \"t\": 3,\n            \"p\": 1,\n            \"hash_length\": 32\n        }\n    },\n    \"public_key\": \"BASE64_SPKI_RSA_OAEP_2048\",\n    \"encrypted_private_key\": \"BASE64_IV12_PLUS_AESGCM_PKCS8\",\n    \"client\": \"web\",\n    \"invite_token\": \"WAJIB kecuali instance masih kosong (setup admin pertama)\"\n}"
+            },
+            "parameters": [],
+            "pathParameters": [],
+            "headers": [
+                {
+                    "name": "Content-Type",
+                    "value": "application/json"
+                }
+            ]
+        },
+        {
+            "_id": "n1DQrTegC_hd5tqQzCMDP",
+            "_type": "request",
+            "name": "Login",
+            "method": "POST",
+            "parentId": "KDO9BLbsC7d1jaWaWeER2",
+            "workspaceId": "2cB7Fi-YEtqxkoNaQ_rrC",
+            "url": "http://localhost:8080/api/auth/login",
+            "sortOrder": 1,
+            "plugins": [],
+            "body": {
+                "mimeType": "application/json",
+                "text": "{\n    \"email\": \"user1@example.com\",\n    \"auth_key\": \"BASE64_HKDF_AUTH_KEY\",\n    \"client\": \"web\"\n}"
+            },
+            "parameters": [],
+            "pathParameters": [],
+            "headers": [
+                {
+                    "name": "Content-Type",
+                    "value": "application/json"
+                }
+            ]
+        },
+        {
+            "_id": "lkUZbUql0ee_3ct6OoPQO",
+            "_type": "request",
+            "name": "Me",
+            "method": "GET",
+            "parentId": "KDO9BLbsC7d1jaWaWeER2",
+            "workspaceId": "2cB7Fi-YEtqxkoNaQ_rrC",
+            "url": "http://localhost:8080/api/auth/me",
+            "sortOrder": 2,
+            "plugins": [],
+            "body": {
+                "mimeType": "No Body"
+            },
+            "authentication": {
+                "type": "bearer",
+                "token": "REPLACE_WITH_JWT_FROM_LOGIN",
+                "prefix": "Bearer"
+            }
+        },
+        {
+            "_id": "O2G9bpJsq6Km3Rs2P6r90",
+            "_type": "request",
+            "name": "Lookup User",
+            "method": "GET",
+            "parentId": "hCWNpbgGpNI0J9CG3s2QK",
+            "workspaceId": "2cB7Fi-YEtqxkoNaQ_rrC",
+            "url": "http://localhost:8080/api/users/lookup?email=user2@example.com",
+            "sortOrder": 0,
+            "plugins": [],
+            "body": {
+                "mimeType": "No Body"
+            },
+            "parameters": [
+                {
+                    "name": "email",
+                    "value": "user2@example.com"
+                }
+            ],
+            "pathParameters": [],
+            "authentication": {
+                "type": "bearer",
+                "token": "REPLACE_WITH_JWT_FROM_LOGIN",
+                "prefix": "Bearer"
+            }
+        },
+        {
+            "_id": "FZJ207aJbitxxLNn2Ndcz",
+            "_type": "request",
+            "name": "Get User By ID",
+            "method": "GET",
+            "parentId": "hCWNpbgGpNI0J9CG3s2QK",
+            "workspaceId": "2cB7Fi-YEtqxkoNaQ_rrC",
+            "url": "http://localhost:8080/api/users/2",
+            "sortOrder": 1,
+            "plugins": [],
+            "body": {
+                "mimeType": "No Body"
+            },
+            "authentication": {
+                "type": "bearer",
+                "token": "REPLACE_WITH_JWT_FROM_LOGIN",
+                "prefix": "Bearer"
+            }
+        },
+        {
+            "_id": "DLViHXEr4E2Q-SSZQKpnf",
+            "_type": "request",
+            "name": "List My Projects",
+            "method": "GET",
+            "parentId": "-pFfTIOhMBQKeOpodqU2X",
+            "workspaceId": "2cB7Fi-YEtqxkoNaQ_rrC",
+            "url": "http://localhost:8080/api/projects",
+            "sortOrder": 0,
+            "plugins": [],
+            "body": {
+                "mimeType": "No Body"
+            },
+            "authentication": {
+                "type": "bearer",
+                "token": "REPLACE_WITH_JWT_FROM_LOGIN",
+                "prefix": "Bearer"
+            }
+        },
+        {
+            "_id": "QIeKvfDSVg7BsWwXFnml_",
+            "_type": "request",
+            "name": "Create Project",
+            "method": "POST",
+            "parentId": "-pFfTIOhMBQKeOpodqU2X",
+            "workspaceId": "2cB7Fi-YEtqxkoNaQ_rrC",
+            "url": "http://localhost:8080/api/projects",
+            "sortOrder": 1,
+            "plugins": [],
+            "body": {
+                "mimeType": "application/json",
+                "text": "{\n    \"name\": \"My Project\",\n    \"encrypted_project_key\": \"base64-enc-project-key-here\"\n}"
+            },
+            "parameters": [],
+            "pathParameters": [],
+            "headers": [
+                {
+                    "name": "Content-Type",
+                    "value": "application/json"
+                }
+            ],
+            "authentication": {
+                "type": "bearer",
+                "token": "REPLACE_WITH_JWT_FROM_LOGIN",
+                "prefix": "Bearer"
+            }
+        },
+        {
+            "_id": "BI9oJ5YwLWUcu9zf100ou",
+            "_type": "request",
+            "name": "Get Project",
+            "method": "GET",
+            "parentId": "-pFfTIOhMBQKeOpodqU2X",
+            "workspaceId": "2cB7Fi-YEtqxkoNaQ_rrC",
+            "url": "http://localhost:8080/api/projects/1",
+            "sortOrder": 2,
+            "plugins": [],
+            "body": {
+                "mimeType": "No Body"
+            },
+            "authentication": {
+                "type": "bearer",
+                "token": "REPLACE_WITH_JWT_FROM_LOGIN",
+                "prefix": "Bearer"
+            }
+        },
+        {
+            "_id": "ZM9v571rsYeudqVZ9ODrl",
+            "_type": "request",
+            "name": "List Project Members",
+            "method": "GET",
+            "parentId": "-pFfTIOhMBQKeOpodqU2X",
+            "workspaceId": "2cB7Fi-YEtqxkoNaQ_rrC",
+            "url": "http://localhost:8080/api/projects/1/members",
+            "sortOrder": 3,
+            "plugins": [],
+            "body": {
+                "mimeType": "No Body"
+            },
+            "authentication": {
+                "type": "bearer",
+                "token": "REPLACE_WITH_JWT_FROM_LOGIN",
+                "prefix": "Bearer"
+            }
+        },
+        {
+            "_id": "8HMxQK48teV2igL8MpWJN",
+            "_type": "request",
+            "name": "Invite Member",
+            "method": "POST",
+            "parentId": "-pFfTIOhMBQKeOpodqU2X",
+            "workspaceId": "2cB7Fi-YEtqxkoNaQ_rrC",
+            "url": "http://localhost:8080/api/projects/1/invite",
+            "sortOrder": 4,
+            "plugins": [],
+            "body": {
+                "mimeType": "application/json",
+                "text": "{\n    \"user_id\": 2,\n    \"encrypted_project_key\": \"base64-enc-key-for-invitee\",\n    \"role\": \"editor\"\n}"
+            },
+            "parameters": [],
+            "pathParameters": [],
+            "headers": [
+                {
+                    "name": "Content-Type",
+                    "value": "application/json"
+                }
+            ],
+            "authentication": {
+                "type": "bearer",
+                "token": "REPLACE_WITH_JWT_FROM_LOGIN",
+                "prefix": "Bearer"
+            }
+        },
+        {
+            "_id": "G1jT6LXj9oLrJ0FlEKz6u",
+            "_type": "request",
+            "name": "List Project Environments",
+            "method": "GET",
+            "parentId": "-pFfTIOhMBQKeOpodqU2X",
+            "workspaceId": "2cB7Fi-YEtqxkoNaQ_rrC",
+            "url": "http://localhost:8080/api/projects/1/environments",
+            "sortOrder": 5,
+            "plugins": [],
+            "body": {
+                "mimeType": "No Body"
+            },
+            "authentication": {
+                "type": "bearer",
+                "token": "REPLACE_WITH_JWT_FROM_LOGIN",
+                "prefix": "Bearer"
+            }
+        },
+        {
+            "_id": "9izEV-IEvZ4KyM7JSdBLQ",
+            "_type": "request",
+            "name": "Create Project Environment",
+            "method": "POST",
+            "parentId": "-pFfTIOhMBQKeOpodqU2X",
+            "workspaceId": "2cB7Fi-YEtqxkoNaQ_rrC",
+            "url": "http://localhost:8080/api/projects/1/environments",
+            "sortOrder": 6,
+            "plugins": [],
+            "body": {
+                "mimeType": "application/json",
+                "text": "{\n    \"name\": \"production\"\n}"
+            },
+            "parameters": [],
+            "pathParameters": [],
+            "headers": [
+                {
+                    "name": "Content-Type",
+                    "value": "application/json"
+                }
+            ],
+            "authentication": {
+                "type": "bearer",
+                "token": "REPLACE_WITH_JWT_FROM_LOGIN",
+                "prefix": "Bearer"
+            }
+        },
+        {
+            "_id": "fQRoM_laATA--kUu20W1o",
+            "_type": "request",
+            "name": "List Variables",
+            "method": "GET",
+            "parentId": "FSrJUe3mlq2r9iHLqjPU_",
+            "workspaceId": "2cB7Fi-YEtqxkoNaQ_rrC",
+            "url": "http://localhost:8080/api/environments/1/variables",
+            "sortOrder": 0,
+            "plugins": [],
+            "body": {
+                "mimeType": "No Body"
+            },
+            "authentication": {
+                "type": "bearer",
+                "token": "REPLACE_WITH_JWT_FROM_LOGIN",
+                "prefix": "Bearer"
+            }
+        },
+        {
+            "_id": "lmEiyEYjbicMdm7h30ILw",
+            "_type": "request",
+            "name": "Create Variable",
+            "method": "POST",
+            "parentId": "FSrJUe3mlq2r9iHLqjPU_",
+            "workspaceId": "2cB7Fi-YEtqxkoNaQ_rrC",
+            "url": "http://localhost:8080/api/environments/1/variables",
+            "sortOrder": 1,
+            "plugins": [],
+            "body": {
+                "mimeType": "application/json",
+                "text": "{\n    \"encrypted_key\": \"base64-enc-key\",\n    \"encrypted_value\": \"base64-enc-value\"\n}"
+            },
+            "parameters": [],
+            "pathParameters": [],
+            "headers": [
+                {
+                    "name": "Content-Type",
+                    "value": "application/json"
+                }
+            ],
+            "authentication": {
+                "type": "bearer",
+                "token": "REPLACE_WITH_JWT_FROM_LOGIN",
+                "prefix": "Bearer"
+            }
+        },
+        {
+            "_id": "6j-cMiqzP5lTY1ITF85LX",
+            "_type": "request",
+            "name": "Delete Environment",
+            "method": "DELETE",
+            "parentId": "FSrJUe3mlq2r9iHLqjPU_",
+            "workspaceId": "2cB7Fi-YEtqxkoNaQ_rrC",
+            "url": "http://localhost:8080/api/environments/1",
+            "sortOrder": 2,
+            "plugins": [],
+            "body": {
+                "mimeType": "No Body"
+            },
+            "authentication": {
+                "type": "bearer",
+                "token": "REPLACE_WITH_JWT_FROM_LOGIN",
+                "prefix": "Bearer"
+            }
+        },
+        {
+            "_id": "aDiDcb1_tsD6gH2BP_cxG",
+            "_type": "request",
+            "name": "Update Variable",
+            "method": "PUT",
+            "parentId": "_aTUh9vWSLLWO4KMvWk82",
+            "workspaceId": "2cB7Fi-YEtqxkoNaQ_rrC",
+            "url": "http://localhost:8080/api/variables/1",
+            "sortOrder": 0,
+            "plugins": [],
+            "body": {
+                "mimeType": "application/json",
+                "text": "{\n    \"encrypted_key\": \"base64-enc-key-updated\",\n    \"encrypted_value\": \"base64-enc-value-updated\"\n}"
+            },
+            "parameters": [],
+            "pathParameters": [],
+            "headers": [
+                {
+                    "name": "Content-Type",
+                    "value": "application/json"
+                }
+            ],
+            "authentication": {
+                "type": "bearer",
+                "token": "REPLACE_WITH_JWT_FROM_LOGIN",
+                "prefix": "Bearer"
+            }
+        },
+        {
+            "_id": "xx0sHfe4RQGzRKFELD59W",
+            "_type": "request",
+            "name": "Delete Variable",
+            "method": "DELETE",
+            "parentId": "_aTUh9vWSLLWO4KMvWk82",
+            "workspaceId": "2cB7Fi-YEtqxkoNaQ_rrC",
+            "url": "http://localhost:8080/api/variables/1",
+            "sortOrder": 1,
+            "plugins": [],
+            "body": {
+                "mimeType": "No Body"
+            },
+            "authentication": {
+                "type": "bearer",
+                "token": "REPLACE_WITH_JWT_FROM_LOGIN",
+                "prefix": "Bearer"
+            }
+        },
+        {
+            "_id": "FdyF2Tp6MmENUWb_RZ7OL",
+            "_type": "request",
+            "name": "Health Check",
+            "method": "GET",
+            "parentId": "pbqOEz7BYvLMBzUNfekrX",
+            "workspaceId": "2cB7Fi-YEtqxkoNaQ_rrC",
+            "url": "http://localhost:8080/health",
+            "sortOrder": 0,
+            "plugins": [],
+            "body": {
+                "mimeType": "No Body"
+            }
+        },
+        {
+            "_id": "ZiZxTk2nBJGExnocDN8NP",
+            "_type": "request",
+            "name": "Root (SPA)",
+            "method": "GET",
+            "parentId": "pbqOEz7BYvLMBzUNfekrX",
+            "workspaceId": "2cB7Fi-YEtqxkoNaQ_rrC",
+            "url": "http://localhost:8080/",
+            "sortOrder": 1,
+            "plugins": [],
+            "body": {
+                "mimeType": "No Body"
+            }
+        },
+        {
+            "_id": "FcMbkRfOBrnh_mmAxU0Lo",
+            "_type": "request",
+            "name": "KDF Params (pre-login)",
+            "method": "GET",
+            "parentId": "KDO9BLbsC7d1jaWaWeER2",
+            "workspaceId": "2cB7Fi-YEtqxkoNaQ_rrC",
+            "url": "http://localhost:8080/api/auth/kdf?email=user1@example.com",
+            "sortOrder": 3,
+            "plugins": [],
+            "body": {
+                "mimeType": "No Body"
+            }
+        },
+        {
+            "_id": "EVj8mjzU6Ag27cAGxJWAG",
+            "_type": "request",
+            "name": "Logout",
+            "method": "POST",
+            "parentId": "KDO9BLbsC7d1jaWaWeER2",
+            "workspaceId": "2cB7Fi-YEtqxkoNaQ_rrC",
+            "url": "http://localhost:8080/api/auth/logout",
+            "sortOrder": 5,
+            "plugins": [],
+            "body": {
+                "mimeType": "No Body"
+            }
+        },
+        {
+            "_id": "6PadpDMwBT4VXbw6z6A0G",
+            "_type": "request",
+            "name": "Login CLI (bearer token)",
+            "method": "POST",
+            "parentId": "KDO9BLbsC7d1jaWaWeER2",
+            "workspaceId": "2cB7Fi-YEtqxkoNaQ_rrC",
+            "url": "http://localhost:8080/api/auth/login",
+            "sortOrder": 4,
+            "plugins": [],
+            "body": {
+                "mimeType": "application/json",
+                "text": "{\n    \"email\": \"user1@example.com\",\n    \"auth_key\": \"BASE64_HKDF_AUTH_KEY\",\n    \"client\": \"cli\"\n}"
+            }
+        },
+        {
+            "_id": "D5O0KDQUpi3yJLkPKWHxF",
+            "_type": "request_group",
+            "name": "Admin",
+            "children": [],
+            "parentId": null,
+            "workspaceId": "2cB7Fi-YEtqxkoNaQ_rrC",
+            "sortOrder": 6,
+            "plugins": []
+        },
+        {
+            "_id": "A8cZNMSGMACFHgJAw9uu-",
+            "_type": "request",
+            "name": "Instance Info",
+            "method": "GET",
+            "parentId": "pbqOEz7BYvLMBzUNfekrX",
+            "workspaceId": "2cB7Fi-YEtqxkoNaQ_rrC",
+            "url": "http://localhost:8080/api/instance",
+            "sortOrder": 6,
+            "plugins": [],
+            "body": {
+                "mimeType": "No Body"
+            }
+        },
+        {
+            "_id": "Tf6eyG5YUaQ152tg0DRba",
+            "_type": "request",
+            "name": "Validate Invite (public)",
+            "method": "GET",
+            "parentId": "pbqOEz7BYvLMBzUNfekrX",
+            "workspaceId": "2cB7Fi-YEtqxkoNaQ_rrC",
+            "url": "http://localhost:8080/api/invites/INVITE_TOKEN",
+            "sortOrder": 7,
+            "plugins": [],
+            "body": {
+                "mimeType": "No Body"
+            }
+        },
+        {
+            "_id": "uj-boHiKzllBAKvYqcKRC",
+            "_type": "request",
+            "name": "List Invites",
+            "method": "GET",
+            "parentId": "D5O0KDQUpi3yJLkPKWHxF",
+            "workspaceId": "2cB7Fi-YEtqxkoNaQ_rrC",
+            "url": "http://localhost:8080/api/admin/invites",
+            "sortOrder": 0,
+            "plugins": [],
+            "body": {
+                "mimeType": "No Body"
+            }
+        },
+        {
+            "_id": "_LRjw01Qi3S5MG3Jo_hoT",
+            "_type": "request",
+            "name": "Create Invite",
+            "method": "POST",
+            "parentId": "D5O0KDQUpi3yJLkPKWHxF",
+            "workspaceId": "2cB7Fi-YEtqxkoNaQ_rrC",
+            "url": "http://localhost:8080/api/admin/invites",
+            "sortOrder": 1,
+            "plugins": [],
+            "body": {
+                "mimeType": "application/json",
+                "text": "{\n    \"max_uses\": 5,\n    \"expires_in_hours\": 168\n}"
+            }
+        },
+        {
+            "_id": "TM67xYPkQ6ur2hTcp34X5",
+            "_type": "request",
+            "name": "Revoke Invite",
+            "method": "DELETE",
+            "parentId": "D5O0KDQUpi3yJLkPKWHxF",
+            "workspaceId": "2cB7Fi-YEtqxkoNaQ_rrC",
+            "url": "http://localhost:8080/api/admin/invites/1",
+            "sortOrder": 2,
+            "plugins": [],
+            "body": {
+                "mimeType": "No Body"
+            }
+        },
+        {
+            "_id": "oGBt7dtOu3QZrGC4Dw9I4",
+            "_type": "request",
+            "name": "List Users",
+            "method": "GET",
+            "parentId": "D5O0KDQUpi3yJLkPKWHxF",
+            "workspaceId": "2cB7Fi-YEtqxkoNaQ_rrC",
+            "url": "http://localhost:8080/api/admin/users",
+            "sortOrder": 3,
+            "plugins": [],
+            "body": {
+                "mimeType": "No Body"
+            }
+        },
+        {
+            "_id": "UpvLlGR9pVn6K-HgyL7uq",
+            "_type": "request",
+            "name": "Disable User",
+            "method": "POST",
+            "parentId": "D5O0KDQUpi3yJLkPKWHxF",
+            "workspaceId": "2cB7Fi-YEtqxkoNaQ_rrC",
+            "url": "http://localhost:8080/api/admin/users/2/disable",
+            "sortOrder": 4,
+            "plugins": [],
+            "body": {
+                "mimeType": "No Body"
+            }
+        },
+        {
+            "_id": "f5hfiI-_hUi7CSLI4Ytq8",
+            "_type": "request",
+            "name": "Enable User",
+            "method": "POST",
+            "parentId": "D5O0KDQUpi3yJLkPKWHxF",
+            "workspaceId": "2cB7Fi-YEtqxkoNaQ_rrC",
+            "url": "http://localhost:8080/api/admin/users/2/enable",
+            "sortOrder": 5,
+            "plugins": [],
+            "body": {
+                "mimeType": "No Body"
+            }
+        },
+        {
+            "_id": "FAe88O5KCMwwUnravHGys",
+            "_type": "request",
+            "name": "Delete User",
+            "method": "DELETE",
+            "parentId": "D5O0KDQUpi3yJLkPKWHxF",
+            "workspaceId": "2cB7Fi-YEtqxkoNaQ_rrC",
+            "url": "http://localhost:8080/api/admin/users/2",
+            "sortOrder": 6,
+            "plugins": [],
+            "body": {
+                "mimeType": "No Body"
+            }
+        },
+        {
+            "_id": "W0XTdJw38beCroZwkZRo5",
+            "_type": "request",
+            "name": "Update Member Role (manage)",
+            "method": "PATCH",
+            "parentId": "-pFfTIOhMBQKeOpodqU2X",
+            "workspaceId": "2cB7Fi-YEtqxkoNaQ_rrC",
+            "url": "http://localhost:8080/api/projects/1/members/2",
+            "sortOrder": 7,
+            "plugins": [],
+            "body": {
+                "mimeType": "application/json",
+                "text": "{\n    \"role\": \"editor\"\n}"
+            }
+        },
+        {
+            "_id": "q-87J3itKL_ZTLSzkoUle",
+            "_type": "request",
+            "name": "Set Member Permissions (manage)",
+            "method": "PUT",
+            "parentId": "-pFfTIOhMBQKeOpodqU2X",
+            "workspaceId": "2cB7Fi-YEtqxkoNaQ_rrC",
+            "url": "http://localhost:8080/api/projects/1/members/2/permissions",
+            "sortOrder": 8,
+            "plugins": [],
+            "body": {
+                "mimeType": "application/json",
+                "text": "{\n    \"overrides\": [\n        {\n            \"capability\": \"var.delete\",\n            \"effect\": \"deny\"\n        }\n    ]\n}"
+            }
+        },
+        {
+            "_id": "DbqDyEUAbqMH3dqJfV_uh",
+            "_type": "request",
+            "name": "Remove Member (manage)",
+            "method": "DELETE",
+            "parentId": "-pFfTIOhMBQKeOpodqU2X",
+            "workspaceId": "2cB7Fi-YEtqxkoNaQ_rrC",
+            "url": "http://localhost:8080/api/projects/1/members/2",
+            "sortOrder": 9,
+            "plugins": [],
+            "body": {
+                "mimeType": "No Body"
+            }
+        },
+        {
+            "_id": "Ph8XrsxyMQs_27sFN3E3o",
+            "_type": "request",
+            "name": "Permission Catalog",
+            "method": "GET",
+            "parentId": "pbqOEz7BYvLMBzUNfekrX",
+            "workspaceId": "2cB7Fi-YEtqxkoNaQ_rrC",
+            "url": "http://localhost:8080/api/permissions/catalog",
+            "sortOrder": 8,
+            "plugins": [],
+            "body": {
+                "mimeType": "No Body"
+            }
+        }
+    ]
+}

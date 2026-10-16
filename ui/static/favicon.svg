@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Curtain">
+	<rect width="64" height="64" rx="15" fill="#171029" />
+	<circle cx="32" cy="29" r="17" fill="#221942" />
+	<!-- batang gorden -->
+	<path d="M10 15.5h44" stroke="#8b7ad4" stroke-width="4" stroke-linecap="round" />
+	<!-- panel kiri -->
+	<path d="M12 15.5c2.4 12 1.3 20.4-4 29 8.2-2.9 15.4-4 24-4V15.5z" fill="#5b47a0" />
+	<!-- panel kanan -->
+	<path d="M52 15.5c-2.4 12-1.3 20.4 4 29-8.2-2.9-15.4-4-24-4V15.5z" fill="#5b47a0" />
+	<!-- lipatan -->
+	<path d="M20.5 17v22M43.5 17v22" stroke="#3b2b73" stroke-width="2.6" stroke-linecap="round" />
+	<!-- bintang di balik tirai -->
+	<path
+		d="M32 19c1 6.4 3.6 9 10 10-6.4 1-9 3.6-10 10-1-6.4-3.6-9-10-10 6.4-1 9-3.6 10-10z"
+		fill="#f4c95d"
+	/>
+</svg>

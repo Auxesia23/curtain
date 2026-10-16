@@ -1,0 +1,15 @@
+# Binary
+bin/
+
+# Database dev
+*.db
+*.db-journal
+*.db-wal
+*.db-shm
+
+# Env
+.env
+.env.local
+
+# OS
+.DS_Store
